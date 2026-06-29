@@ -10,7 +10,7 @@ By combining the data-wrangling power of **Python** with the advanced interactiv
 ## 🛠️ Repository Architecture & Deliverables
 * 📁 **`UK_Ecommerece_Data_Analysis.ipynb`**: The master Jupyter Notebook detailing the data cleaning pipeline, anomalous transaction handling (returns/cancellations), RFM modeling, and cohort matrix computation.
 * 📁 **`UK_Ecommerece_Dashboard.pbix`**: The standalone Power BI file containing a fully interactive, production-ready 4-page dashboard designed with deep attention to typography, data hierarchy, and UI consistency.
-* 📁 **`README.md`**: Project documentation and high-level brief (this file).
+* 📁 **`README.md`**: Project documentation and high-level brief.
 
 ---
 
