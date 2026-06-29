@@ -1,88 +1,68 @@
-# UK E-Commerce Customer Analytics & Retention Hub
+# UK E-Commerce Customer Analytics & Retention Engine
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
-[![Pandas](https://img.shields.io/badge/Pandas-2.0%2B-darkblue.svg)](https://pandas.pydata.org/)
-[![Data-Analytics](https://img.shields.io/badge/Analytics-RFM%20%26%20Cohort-emerald.svg)]()
-[![Status](https://img.shields.io/badge/Status-Production--Ready-success.svg)]()
+## 📊 Executive Project Overview
+This end-to-end data analytics project provides an enterprise-grade evaluation of a UK-based e-commerce dataset containing over 540,000 raw transactional records spanning December 2010 to December 2011. 
 
-An enterprise-grade customer intelligence pipeline that transforms over **540,000 raw transactional logs** from a UK-based e-commerce retailer into high-impact, actionable business strategies. This repository implements an end-to-end analytics architecture encompassing data engineering, outlier stabilization, temporal revenue trends, descriptive multi-variant visualization, and structured behavioral customer segmentation.
+By combining the data-wrangling power of **Python** with the advanced interactive storytelling of **Power BI**, this project goes beyond descriptive statistics to deliver an **RFM (Recency, Frequency, Monetary) Segmentation** and a **Time-Based Cohort Retention Matrix**. The final deliverables pinpoint exactly where customer churn occurs, classify users into actionable value tiers, and prescribe distinct strategies to increase sales and lifetime value (LTV).
 
 ---
 
-## 📊 Executive Dashboard Preview
-*Below are the core visual layouts generated dynamically by the execution pipeline. (Replace placeholder links with your actual repository asset paths upon commit).*
-
-| 📈 Page 1: Financial Performance & Revenue Indices | 🗺️ Page 2:  Customer Segmentation & Business Analytics |
-| :---: | :---: |
-| ![Page 1 - Executive Financial Performance](https://ik.imagekit.io/fazil/Page-1.png) | ![Page 2 -  Customer Segmentation & Business Analytics](https://ik.imagekit.io/fazil/Page-2.png) |
-| *Focus: Monthly Net Revenue, Transaction Volumes, and Seasonal Q4 Acceleration Metrics.* | *Focus: UK Baseline Extraction vs. High-Performing European Target Markets.* |
-
-| 👥 Page 3: Retention & Cohort Analysis | 🔄 Page 4: Cohort Summary & Key Takeaways |
-| :---: | :---: |
-| ![Page 3 - RFM Analytics](https://ik.imagekit.io/fazil/Page-3.png) | ![Page 4 - Cohort Analysis](https://ik.imagekit.io/fazil/Page-4.png) |
-| *Focus: Dynamic Recency, Frequency, and Monetary Value Clustering Mapping.* | *Focus: Time-elapsed Account Decay and Month-Over-Month Churn Fences.* |
+## 🛠️ Repository Architecture & Deliverables
+* 📁 **`UK_Ecommerece_Data_Analysis.ipynb`**: The master Jupyter Notebook detailing the data cleaning pipeline, anomalous transaction handling (returns/cancellations), RFM modeling, and cohort matrix computation.
+* 📁 **`UK_Ecommerece_Dashboard.pbix`**: The standalone Power BI file containing a fully interactive, production-ready 4-page dashboard designed with deep attention to typography, data hierarchy, and UI consistency.
+* 📁 **`README.md`**: Project documentation and high-level brief (this file).
 
 ---
 
-## 🎯 Business Objectives & Enterprise Impact
-In transactional commerce, treating all accounts identically limits market efficiency. This pipeline answers vital business questions to transition operations from reactive reporting to automated strategy:
-* **Revenue Preservation:** Tracks product concentration risk to prevent high-yield SKUs from exposing the ecosystem to supply-chain disruption.
-* **Capital Efficiency:** Isolates reverse logistics workflows (returns) to calculate clean, net-operating margins rather than gross inflated revenues.
-* **Customer Lifetime Value (LTV):** Segments customer cohorts programmatically to identify high-value "Champions" for loyalty programs and "At-Risk VIPs" for automated win-back workflows.
+## 🧪 Data Pipeline & Processing (Python)
+The raw dataset was notoriously complex and mirrored real-world transactional discrepancies. The pipeline executed in the notebook resolved:
+1. **Missing Data & Duplicates:** Isolated and handled 135,080 missing `CustomerID` records and cleared 5,268 explicit duplicates.
+2. **Anomalous Records:** Handled negative unit prices (adjustments/debt write-offs) and structural transactional returns.
+3. **RFM Modeling:** Engineered raw data into custom customer-level metrics mapping Recency (days since last purchase), Frequency (total unique orders), and Monetary (lifetime spend).
+4. **Cohort Matrix Generation:** Processed transactional dates into dynamic month-by-month tracking indexes to compute a classic time-based retention breakdown.
 
 ---
 
-## 💾 Dataset Reference
-The pipeline runs natively against the historical transactional log framework.
-* **Data Source:** [UCI Machine Learning Repository - Online Retail Dataset](https://archive.ics.uci.edu/ml/datasets/online+retail)
-* **Shape:** 541,909 records × 8 features
-* **Attributes Covered:** `InvoiceNo`, `StockCode`, `Description`, `Quantity`, `InvoiceDate`, `UnitPrice`, `CustomerID`, `Country`.
+## 📈 Power BI Interactive Dashboard Breakdowns
+
+### Page 1 | Executive Financial Performance
+* **Objective:** Establish the baseline macro health metrics of the e-commerce store.
+* **Key Visuals:** High-contrast KPI metric cards (Total Revenue: $8.89M, Total Orders: 19K, Average Order Value (AOV): $479.46, Active Customers: 4,339). A clean Monthly Revenue Trend line chart capturing a Q4 holiday sales explosion peaking at over $1.15M in November. Geographic bubble map outlining international distribution alongside a Top 10 product revenue chart.
+
+![Page 1 - Executive Financial Performance](https://ik.imagekit.io/fazil/Page-1.png?updatedAt=1782743752967)
 
 ---
 
-## ⚙️ Data Engineering & Pipeline Architecture
+### Page 2 | Customer Segmentation & RFM Analytics
+* **Objective:** Break down the active customer base into actionable behavioral buckets.
+* **Key Visuals:** Nested donut charts splitting customer volume vs. actual revenue contribution across segments (*Champions, Loyal, About to Sleep, Hibernating, At Risk VIPs*). Includes an interactive Customer Drill-Down data grid and clear text blocks highlighting that Champions and Loyal segments drive nearly 50% of top-line revenue.
 
-### 1. Robust Data Cleaning & Preprocessing
-* **Adaptive String Parsing:** Employs explicit `format='mixed'` datetime structural evaluation to bypass system-level format mismatches safely.
-* **Null Boundary Resolution:** Identifies structural gaps in `CustomerID` variables; instead of inserting artificial biases, drops unidentifiable records to secure accurate downstream clustering vectors.
-
-### 2. Isolation of Reverse Logistics
-* Separates cancellation and adjustment entries (flagged via negative indices or specific descriptive logs like *"Adjust bad debt"*) into a standalone downstream dataframe `df_returns`.
-* This preserves an accurate historical track of churn friction while ensuring that core revenue tracking accurately isolates absolute net revenue ($\approx \$8.88\text{M}$ across $18,536$ unique orders).
-
-### 3. Outlier Stabilization
-* Mitigates severe data skew using data intuition boundaries to eliminate data entries capturing extreme unrepresentative volumes (e.g., stabilizing distributions at standard business operations thresholds for `Quantity` and `UnitPrice`), preventing chart distortion.
+![Page 2 - Customer Segmentation & RFM Analytics](https://ik.imagekit.io/fazil/Page-2.png?updatedAt=1782743752173)
 
 ---
 
-## 🧠 Core Analytical Methodologies
+### Page 3 | Customer Retention & Cohort Matrix
+* **Objective:** Map the physical lifecycle and decay of customer cohorts over a 12-month window.
+* **Key Visuals:** A conditional-formatted Cohort Retention Heatmap matrix displaying month-by-month user drop-offs. Accompanied by a decay trend curve tracking the drop from Month 0 to Month 12, showcasing a baseline Repeat Customer Rate of 66% and an overall Average Customer Lifespan of 3.08 years.
 
-### 🕒 Temporal Dynamics
-* Aggregates purchase trends down to precise hour-of-day and month-of-year horizons to uncover consumer ordering cycles, highlighting significant Q4 holiday buying velocity.
-
-### 🎯 RFM Behavioral Framework
-Formulates three custom transaction vectors calculated at the individual consumer profile level:
-1. **Recency ($R$):** Timedelta computation capturing the number of business days elapsed between a customer’s latest invoice and the maximum date anchor of the system ledger.
-2. **Frequency ($F$):** Total count of unique valid operational invoices generated by an account.
-3. **Monetary Value ($M$):** Continuous dot-product summation of `Quantity × UnitPrice` establishing lifetime financial equity.
-
-### 📉 Cohort Retention Matrix
-* Constructs a longitudinal user lifecycle matrix grouping customer accounts into distinct temporal cohorts based on their initial transaction month.
-* Measures ongoing interaction across sequential months to map out clear retention decay tables.
+![Page 3 - Customer Retention & Cohort Matrix](https://ik.imagekit.io/fazil/Page-3.png?updatedAt=1782743752474)
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
-* **Core Engine:** Python 3.8+
-* **Data Manipulation:** Pandas, NumPy
-* **Visualization Suite:** Matplotlib, Seaborn
-* **Temporal Tracking:** Datetime
+### Page 4 | Executive Insights & Recommended Actions
+* **Objective:** Translate data discoveries directly into core corporate strategy.
+* **Key Visuals:** A highly scannable, side-by-side matrix summarizing critical cohort observations against prescriptive business interventions. It breaks down onboarding email cadences, targeted re-engagement campaigns for the 2K inactive users, and custom product recommendations to lift Month 1 retention.
+
+![Page 4 - Executive Insights & Recommended Actions](https://ik.imagekit.io/fazil/Page-4.png?updatedAt=1782743753197)
 
 ---
 
-## 🚀 Getting Started
+## 🎯 Overall Strategic Findings & Core Takeaways
 
-### Prerequisites
-Ensure your local environment contains standard computational packages:
-```bash
-pip install pandas numpy matplotlib seaborn
+1. **The First-Month Attrition Crisis:** The cohort heatmap exposes that **76.6% of acquired customers fail to make a secondary purchase in their first month**. This marks the single biggest opportunity for commercial improvement. The first 30 days must be targeted with immediate automated post-purchase workflows.
+2. **High Concentration of Value:** Nearly half of all revenue is sustained by a thin tier of *Champions* and *Loyal Customers*. Protecting this baseline from churn via proactive VIP retention perks is vital for stabilizing recurring cash flows.
+3. **Severe At-Risk Pools:** Over 2,000 customers currently sit in *Hibernating* or *Inactive* states, representing massive dormant value. Targeted win-back campaigns with strategic, short-window promotional discounts are recommended to reactivate high lifetime-value historical buyers.
+4. **Extreme Seasonality:** Business performance is intensely seasonal, scaling up sharply from September through November. Inventory buffers, infrastructure scaling, and ad-spend allocation must be heavily prioritized for early Q3 to capture this predictable velocity.
+
+---
+*Developed by [Fazil RM](https://github.com/Fazil-RM) - Final Year Student specializing in Mathematics & Applied Data Science.*
