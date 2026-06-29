@@ -12,14 +12,14 @@ An enterprise-grade customer intelligence pipeline that transforms over **540,00
 ## 📊 Executive Dashboard Preview
 *Below are the core visual layouts generated dynamically by the execution pipeline. (Replace placeholder links with your actual repository asset paths upon commit).*
 
-| 📈 Page 1: Financial Performance & Revenue Indices | 🗺️ Page 2: Spatial Distribution & Global Expansion |
+| 📈 Page 1: Financial Performance & Revenue Indices | 🗺️ Page 2:  Customer Segmentation & Business Analytics |
 | :---: | :---: |
-| ![Page 1 - Executive Financial Performance](https://ik.imagekit.io/fazil/Page-1.png) |
+| ![Page 1 - Executive Financial Performance](https://ik.imagekit.io/fazil/Page-1.png) | ![Page 2 -  Customer Segmentation & Business Analytics](https://ik.imagekit.io/fazil/Page-2.png) |
 | *Focus: Monthly Net Revenue, Transaction Volumes, and Seasonal Q4 Acceleration Metrics.* | *Focus: UK Baseline Extraction vs. High-Performing European Target Markets.* |
 
-| 👥 Page 3: Behavioral RFM Segmentation Grid | 🔄 Page 4: Longitudinal Cohort Retention Matrix |
+| 👥 Page 3: Retention & Cohort Analysis | 🔄 Page 4: Cohort Summary & Key Takeaways |
 | :---: | :---: |
-| ![Page 3 - RFM Analytics](https://raw.githubusercontent.com/yourusername/your-repo-name/main/assets/dashboard_page3.png) | ![Page 4 - Cohort Analysis](https://raw.githubusercontent.com/yourusername/your-repo-name/main/assets/dashboard_page4.png) |
+| ![Page 3 - RFM Analytics](https://ik.imagekit.io/fazil/Page-3.png) | ![Page 4 - Cohort Analysis](https://ik.imagekit.io/fazil/Page-4.png) |
 | *Focus: Dynamic Recency, Frequency, and Monetary Value Clustering Mapping.* | *Focus: Time-elapsed Account Decay and Month-Over-Month Churn Fences.* |
 
 ---
